@@ -32,7 +32,7 @@ sudo sed -i 's/^#HandleLidSwitchDocked=.*/HandleLidSwitchDocked=ignore/' /etc/sy
 ```
 
 
-# powertop
+# Screen saving
 ```
 cat << EOF | sudo tee /etc/systemd/system/screenoff.service
 [Unit]
@@ -44,7 +44,7 @@ Environment="TERM=linux"
 RemainAfterExit=yes
 ExecStart=/usr/bin/setterm -blank 1
 StandardOutput=tty
-TTYPath=/dev/tty0
+TTYPath=/dev/console
 
 [Install]
 WantedBy=multi-user.target
