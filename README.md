@@ -57,3 +57,10 @@ sudo systemctl enable powertop.service
 sudo systemctl enable screenoff.service
 sudo reboot
 ```
+
+# Optional: remove 2min timeout if connected to WiFi and not Ethernet
+```
+sed '/dhcp4: true/a \      optional: true' /etc/netplan/00-installer-config.yaml | sudo tee /etc/netplan/00-installer-config.yaml
+sudo netplan apply
+sudo reboot
+```
