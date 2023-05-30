@@ -58,9 +58,18 @@ sudo systemctl enable screenoff.service
 sudo reboot
 ```
 
-# Optional: remove 2min timeout if connected to WiFi and not Ethernet
+# Network configuration
+
+remove 2min timeout if connected to WiFi instead of Ethernet
 ```
 sed '/dhcp4: true/a \      optional: true' /etc/netplan/00-installer-config.yaml | sudo tee /etc/netplan/00-installer-config.yaml
+sudo netplan apply
+sudo reboot
+```
+
+Wake-On-Lan, don't forget to change BIOS settings (Can do the same for WiFi interface)
+```
+sed '/dhcp4: true/a \      wakeonlan: true' /etc/netplan/00-installer-config.yaml | sudo tee /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 sudo reboot
 ```
